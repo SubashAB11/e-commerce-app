@@ -1,7 +1,6 @@
 package com.abs.e_commerce.customer;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
 
