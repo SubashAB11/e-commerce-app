@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ProductPurchaseException extends RuntimeException {
+public class BusinessException extends RuntimeException {
+
     private final String message;
+
 }
