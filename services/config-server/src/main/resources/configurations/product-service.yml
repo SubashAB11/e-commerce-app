@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer?currentSchema=public&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/product
     username: subash
     password: subash
     driver-class-name: org.postgresql.Driver
@@ -13,4 +13,4 @@ spring:
     show-sql: true
 
 server:
-  port: 8090
+  port: 8050
