@@ -1,7 +1,10 @@
 package com.abs.e_commerce.orderLine;
 
+import org.springframework.stereotype.Service;
+
 import com.abs.e_commerce.order.Order;
 
+@Service
 public class OrderLineMapper {
 
     public OrderLine toOrderLine(OrderLineRequest orderLineRequest) {
