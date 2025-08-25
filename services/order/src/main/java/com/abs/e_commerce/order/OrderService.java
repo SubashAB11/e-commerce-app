@@ -11,6 +11,8 @@ import com.abs.e_commerce.kafka.OrderConfirmation;
 import com.abs.e_commerce.kafka.OrderProducer;
 import com.abs.e_commerce.orderLine.OrderLineRequest;
 import com.abs.e_commerce.orderLine.OrderLineService;
+import com.abs.e_commerce.payment.PaymentClient;
+import com.abs.e_commerce.payment.PaymentRequest;
 import com.abs.e_commerce.product.ProductClient;
 import com.abs.e_commerce.product.PurchaseRequest;
 
@@ -27,6 +29,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
     public Long createOrder(OrderRequest request) {
 
@@ -47,6 +50,8 @@ public class OrderService {
         }
 
         // start payment process
+        paymentClient.requestOrderPayment(new PaymentRequest(request.amount(), request.paymentMethod(), request.id(),
+                request.reference(), customer));
 
         // send the order confirmation using notification service
         orderProducer.sendOrderConfirmation(
