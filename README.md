@@ -2,7 +2,7 @@
 
 Welcome to the E-Commerce Microservice Application! This project showcases a robust backend architecture using Spring Boot and various other technologies to create a scalable and efficient e-commerce platform.
 
-[E-commerce Design Diagram](https://github.com/SubashAB11/e-commerce-app/blob/dev/e-commerce-design.svg)
+[E-commerce Design Diagram](e-commerce-design.svg)(https://github.com/SubashAB11/e-commerce-app/blob/dev/e-commerce-design.svg)
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -42,6 +42,7 @@ The application follows a microservice architecture with the following structure
 - **Order Service**: Manages order lifecycle.
 - **Payment Service**: Processes payments.
 - **Notification Service**: Sends order confirmation and updates via email.
+
 
 
 
