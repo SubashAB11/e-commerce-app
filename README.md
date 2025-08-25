@@ -16,7 +16,6 @@ This e-commerce application is built using a microservice architecture with Spri
 - **REST Services**: For creating RESTful APIs.
 - **MailDev**: For sending emails to customers on ordering.
 - **PostgreSQL**: Relational database for storing structured data.
-- **MongoDB**: NoSQL database for storing unstructured data.
 - **Eureka Server**: For client discovery.
 - **Config Server**: For centralized configuration management.
 - **Kafka**: For message brokering and event streaming.
@@ -24,7 +23,6 @@ This e-commerce application is built using a microservice architecture with Spri
 - **Docker**: For containerization of services.
 - **Swagger**: For API documentation.
 - **Zipkin**: For distributed tracing.
-- **Keycloak**: For identity and access management.
 - **Docker Compose**: For orchestrating multi-container Docker applications.
 
 ## Architecture
@@ -42,4 +40,5 @@ The application follows a microservice architecture with the following structure
 - **Order Service**: Manages order lifecycle.
 - **Payment Service**: Processes payments.
 - **Notification Service**: Sends order confirmation and updates via email.
+
 
