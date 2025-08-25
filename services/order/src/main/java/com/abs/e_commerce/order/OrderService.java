@@ -50,7 +50,7 @@ public class OrderService {
         }
 
         // start payment process
-        paymentClient.requestOrderPayment(new PaymentRequest(request.amount(), request.paymentMethod(), request.id(),
+        paymentClient.requestOrderPayment(new PaymentRequest(request.amount(), request.paymentMethod(), order.getId(),
                 request.reference(), customer));
 
         // send the order confirmation using notification service
