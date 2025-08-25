@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer?currentSchema=public&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/customer
     username: subash
     password: subash
     driver-class-name: org.postgresql.Driver
