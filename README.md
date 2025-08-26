@@ -2,7 +2,7 @@
 
 Welcome to the E-Commerce Microservice Application! This project showcases a robust backend architecture using Spring Boot and various other technologies to create a scalable and efficient e-commerce platform.
 
-![E-commerce Design Diagram](e-commerce-design.svg)
+![E-commerce Design Diagram](e-commerce-design.png)
 
 ## Table of Contents
 - [Introduction](#introduction)
