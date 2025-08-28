@@ -4,6 +4,7 @@ import com.abs.auth.auth.AuthenticationResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@Getter
 public class JWTService {
 
     private static final String TOKEN_TYPE = "token_type";
