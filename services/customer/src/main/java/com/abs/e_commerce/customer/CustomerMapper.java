@@ -21,4 +21,18 @@ public class CustomerMapper {
                 customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getAddress()
         );
     }
+
+    public com.abs.e_commerce.proto.GetCustomerResponse fromCustomerGrpc(Customer customer) {
+        return com.abs.e_commerce.proto.GetCustomerResponse.newBuilder()
+                .setId(customer.getId())
+                .setFirstName(customer.getFirstName())
+                .setLastName(customer.getLastName())
+                .setEmail(customer.getEmail())
+                .setAddress(com.abs.e_commerce.proto.Address.newBuilder()
+                        .setHouseNumber(customer.getAddress().getHouseNumber())
+                        .setStreet(customer.getAddress().getStreet())
+                        .setZipCode(customer.getAddress().getZipCode())
+                        .build())
+                .build();
+    }
 }

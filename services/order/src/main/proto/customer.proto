@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.abs.e_commerce.proto";
+option java_outer_classname = "CustomerProto";
+
+message GetCustomerRequest {
+  string id = 1;
+}
+
+message GetCustomerResponse {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  Address address = 5;
+}
+
+message Address {
+  string street = 1;
+  string houseNumber = 2;
+  string zipCode = 3;
+}
+
+service CustomerService {
+  rpc GetCustomerById (GetCustomerRequest) returns (GetCustomerResponse);
+}

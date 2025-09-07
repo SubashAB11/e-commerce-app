@@ -1,14 +1,30 @@
 package com.abs.e_commerce.customer;
 
-import java.util.Optional;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.abs.e_commerce.grpc.GrpcChannelFactory;
+import com.abs.e_commerce.proto.CustomerServiceGrpc;
+import com.abs.e_commerce.proto.GetCustomerRequest;
+import com.abs.e_commerce.proto.GetCustomerResponse;
+import io.grpc.ManagedChannel;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-@FeignClient(name = "customer-service")
-public interface CustomerClient {
+@Service
+public class CustomerClient {
 
-    @GetMapping("/api/v1/customer/get/{customer-id}")
-    Optional<CustomerResponse> getCustomerById(@PathVariable("customer-id") String customerId);
+    private final CustomerServiceGrpc.CustomerServiceBlockingStub blockingStub;
+
+    public CustomerClient(GrpcChannelFactory grpcChannelFactory,
+                          @Value("${application.config.service.name.customer}") String serviceName) {
+        ManagedChannel channel = grpcChannelFactory.createChannel(serviceName);
+        this.blockingStub = CustomerServiceGrpc.newBlockingStub(channel);
+    }
+
+    public GetCustomerResponse fetchCustomer(String id) {
+        GetCustomerRequest req = GetCustomerRequest.newBuilder()
+                .setId(id)
+                .build();
+
+        return blockingStub.getCustomerById(req);
+    }
 }

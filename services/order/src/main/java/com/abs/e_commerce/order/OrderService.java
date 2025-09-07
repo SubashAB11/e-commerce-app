@@ -3,6 +3,7 @@ package com.abs.e_commerce.order;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.abs.e_commerce.proto.GetCustomerResponse;
 import org.springframework.stereotype.Service;
 
 import com.abs.e_commerce.customer.CustomerClient;
@@ -34,35 +35,35 @@ public class OrderService {
     public Long createOrder(OrderRequest request) {
 
         // check the customer
-        var customer = customerClient.getCustomerById(request.customerId()).orElseThrow(
-                () -> new BusinessException("customer with the id " + request.customerId() + " is not found"));
+        GetCustomerResponse getCustomerResponse = customerClient.fetchCustomer(request.customerId());
 
         // purchase the product from product service
-        var puchasedProducts = this.productClient.purchaseProducts(request.products());
+        //var puchasedProducts = this.productClient.purchaseProducts(request.products());
 
         // persist the order
-        var order = repository.save(mapper.toOrder(request));
+        //var order = repository.save(mapper.toOrder(request));
 
         // persist order lines
-        for (PurchaseRequest purchaseRequest : request.products()) {
-            orderLineService.saveOrderLine(
-                    new OrderLineRequest(null, order.getId(), purchaseRequest.productId(), purchaseRequest.quantity()));
-        }
+        //for (PurchaseRequest purchaseRequest : request.products()) {
+          //  orderLineService.saveOrderLine(
+            //        new OrderLineRequest(null, order.getId(), purchaseRequest.productId(), purchaseRequest.quantity()));
+        //}
 
         // start payment process
-        paymentClient.requestOrderPayment(new PaymentRequest(request.amount(), request.paymentMethod(), order.getId(),
-                request.reference(), customer));
+        //paymentClient.requestOrderPayment(new PaymentRequest(request.amount(), request.paymentMethod(), order.getId(),
+          //      request.reference(), customer));
 
         // send the order confirmation using notification service
-        orderProducer.sendOrderConfirmation(
-                new OrderConfirmation(
-                        request.reference(),
-                        request.amount(),
-                        request.paymentMethod(),
-                        customer,
-                        puchasedProducts));
+        //orderProducer.sendOrderConfirmation(
+          //      new OrderConfirmation(
+            //            request.reference(),
+              //          request.amount(),
+                //        request.paymentMethod(),
+                  //      customer,
+                    //    puchasedProducts));
 
-        return order.getId();
+        //return order.getId();
+        return null;
     }
 
     public List<OrderResponse> getAll() {
