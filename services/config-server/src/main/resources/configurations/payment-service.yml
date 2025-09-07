@@ -12,6 +12,10 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
+  grpc:
+    server:
+      port: 9060
+
   kafka:
     producer:
       bootstrap-servers: localhost:9092
@@ -22,3 +26,8 @@ spring:
 
 server:
   port: 8060
+
+eureka:
+  instance:
+    metadata-map:
+      gRPC: ${spring.grpc.server.port}
