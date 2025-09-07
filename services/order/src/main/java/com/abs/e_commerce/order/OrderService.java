@@ -38,7 +38,9 @@ public class OrderService {
         GetCustomerResponse getCustomerResponse = customerClient.fetchCustomer(request.customerId());
 
         // purchase the product from product service
-        //var puchasedProducts = this.productClient.purchaseProducts(request.products());
+        var puchasedProducts = this.productClient.purchaseProducts(request.products());
+
+        System.out.println("PUCHASES: " + puchasedProducts.toString());
 
         // persist the order
         //var order = repository.save(mapper.toOrder(request));

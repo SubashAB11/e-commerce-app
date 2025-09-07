@@ -1,6 +1,10 @@
 package com.abs.e_commerce.product;
 
+import com.abs.e_commerce.proto.ProductPurchaseResponse;
+import com.google.type.Money;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @Service
 public class ProductMapper {
@@ -22,9 +26,20 @@ public class ProductMapper {
                 product.getCategory().getName(), product.getCategory().getDescription());
     }
 
-    public ProductPurchaseResponse toProductPurchaseResponse(Product product) {
-        return new ProductPurchaseResponse(product.getId(), product.getName(), product.getDescription(),
-                product.getAvailableQuantity(), product.getPrice());
+    public com.abs.e_commerce.proto.ProductPurchaseResponse toProductPurchaseResponse(Product product) {
+        BigDecimal amount = product.getPrice();
+        String currencyCode = "INR";
+        long units = amount.longValue();
+        int nanos = amount.subtract(new BigDecimal(units))
+                .movePointRight(9)
+                .intValue();
+        return ProductPurchaseResponse.newBuilder()
+                .setProductId(product.getId())
+                .setName(product.getName())
+                .setDescription(product.getDescription())
+                .setQuantity(product.getAvailableQuantity())
+                .setPrice(Money.newBuilder().setCurrencyCode(currencyCode).setUnits(units).setNanos(nanos).build())
+                .build();
     }
 
 }

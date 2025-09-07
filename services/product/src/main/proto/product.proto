@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "google/type/money.proto";
+
+option java_multiple_files = true;
+option java_package = "com.abs.e_commerce.proto";
+option java_outer_classname = "ProductProto";
+
+message ProductPurchaseRequestList {
+  repeated ProductPurchaseRequest requests = 1;
+}
+
+message ProductPurchaseResponseList {
+  repeated ProductPurchaseResponse responses = 1;
+}
+
+message ProductPurchaseRequest {
+  int64 productId = 1;
+  double quantity = 2;
+}
+
+message ProductPurchaseResponse {
+  int64 productId = 1;
+  string name = 2;
+  string description = 3;
+  double quantity = 4;
+  google.type.Money price = 5;
+}
+
+service ProductService {
+  rpc PurchaseProducts (ProductPurchaseRequestList) returns (ProductPurchaseResponseList);
+}
