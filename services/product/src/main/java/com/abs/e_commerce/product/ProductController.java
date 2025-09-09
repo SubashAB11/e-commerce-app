@@ -26,12 +26,6 @@ public class ProductController {
         return ResponseEntity.ok(service.createProduct(request));
     }
 
-    @PostMapping("/purchase")
-    public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(
-            @RequestBody List<ProductPurchaseRequest> request) {
-        return ResponseEntity.ok(service.purchaseProducts(request));
-    }
-
     @GetMapping("/get/{product-id}")
     public ResponseEntity<ProductResponse> getProduct(@PathVariable("product-id") Long productId) {
         return ResponseEntity.ok(service.getProduct(productId));

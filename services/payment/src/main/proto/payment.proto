@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/type/money.proto";
+
+option java_multiple_files = true;
+option java_package = "com.abs.e_commerce.proto";
+option java_outer_classname = "PaymentProto";
+
+message PaymentRequest {
+  google.type.Money amount = 1;
+  PaymentMethod paymentMethod = 2;
+  int64 orderId = 3;
+  string orderRef = 4;
+  Customer customer = 5;
+}
+
+message PaymentResponse {
+  int64 id = 1;
+}
+
+enum PaymentMethod {
+  PAYMENT_METHOD_UNSPECIFIED = 0;
+  UPI = 1;
+  CREDIT_CARD = 2;
+  MASTER_CARD = 3;
+  BITCOIN = 4;
+}
+
+message Customer {
+  string customerId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+}
+
+service PaymentService {
+  rpc createPayment (PaymentRequest) returns (PaymentResponse);
+}

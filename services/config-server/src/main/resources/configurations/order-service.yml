@@ -25,6 +25,8 @@ server:
 
 application:
   config:
-    customer-url: http://localhost:8222/api/v1/customer
-    payment-url: http://localhost:8222/api/v1/payment
-    product-url: http://localhost:8222/api/v1/product
+    service:
+      name:
+        customer: CUSTOMER-SERVICE
+        payment: PAYMENT-SERVICE
+        product: PRODUCT-SERVICE

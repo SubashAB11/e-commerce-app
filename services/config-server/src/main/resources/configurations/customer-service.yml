@@ -12,5 +12,14 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
+  grpc:
+    server:
+      port: 9090
+
 server:
   port: 8090
+
+eureka:
+  instance:
+    metadata-map:
+      gRPC: ${spring.grpc.server.port}

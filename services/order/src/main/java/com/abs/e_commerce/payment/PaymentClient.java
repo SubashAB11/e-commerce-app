@@ -1,13 +1,26 @@
 package com.abs.e_commerce.payment;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.abs.e_commerce.grpc.GrpcChannelFactory;
+import com.abs.e_commerce.proto.PaymentRequest;
+import com.abs.e_commerce.proto.PaymentResponse;
+import com.abs.e_commerce.proto.PaymentServiceGrpc;
+import io.grpc.ManagedChannel;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-@FeignClient(name = "payment-service")
-public interface PaymentClient {
+@Service
+public class PaymentClient {
 
-    @PostMapping("/api/v1/payment")
-    Long requestOrderPayment(@RequestBody PaymentRequest request);
 
+    private final PaymentServiceGrpc.PaymentServiceBlockingStub blockingStub;
+
+    public PaymentClient(GrpcChannelFactory channelFactory, @Value("${application.config.service.name.payment}") String serviceName) {
+        ManagedChannel managedChannel = channelFactory.createChannel(serviceName);
+        blockingStub = PaymentServiceGrpc.newBlockingStub(managedChannel);
+    }
+
+    public Long createPayment(PaymentRequest request) {
+        PaymentResponse payment = blockingStub.createPayment(request);
+        return payment.getId();
+    }
 }
