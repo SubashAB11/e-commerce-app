@@ -1,8 +1,13 @@
-package com.abs.auth.auth;
+package com.abs.auth.controller;
 
-import com.abs.auth.customer.ChangePasswordRequest;
-import com.abs.auth.customer.Customer;
-import com.abs.auth.customer.CustomerService;
+import com.abs.auth.dto.ChangePasswordRequest;
+import com.abs.auth.dto.AuthenticationRequest;
+import com.abs.auth.dto.AuthenticationResponse;
+import com.abs.auth.dto.RefreshRequest;
+import com.abs.auth.dto.RegistrationRequest;
+import com.abs.auth.model.Customer;
+import com.abs.auth.service.CustomerService;
+import com.abs.auth.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.abs.auth.customer;
+package com.abs.auth.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

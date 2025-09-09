@@ -44,7 +44,7 @@ public class OrderService {
         GetCustomerResponse getCustomerResponse = customerClient.fetchCustomer(request.customerId());
 
         // purchase the product from product service
-        var puchasedProducts = this.productClient.purchaseProducts(request.products());
+        var purchasedProducts = this.productClient.purchaseProducts(request.products());
 
         // persist the order
         var order = repository.save(mapper.toOrder(request));
@@ -66,7 +66,7 @@ public class OrderService {
                 .build());
 
         // send the order confirmation using notification service
-        List<ProductPurchaseResponse> products = puchasedProducts.stream().map(product ->
+        List<ProductPurchaseResponse> products = purchasedProducts.stream().map(product ->
                 new ProductPurchaseResponse(product.getProductId(), product.getName(), product.getDescription(), product.getQuantity(), new BigDecimal(product.getPrice().getUnits()))).toList();
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(

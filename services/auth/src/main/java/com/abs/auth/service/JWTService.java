@@ -1,8 +1,8 @@
-package com.abs.auth.security;
+package com.abs.auth.service;
 
-import com.abs.auth.auth.AuthenticationResponse;
+import com.abs.auth.dto.AuthenticationResponse;
+import com.abs.auth.helper.KeyUtils;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 @Service

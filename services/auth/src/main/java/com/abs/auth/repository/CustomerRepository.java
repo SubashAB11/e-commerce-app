@@ -1,5 +1,6 @@
-package com.abs.auth.customer;
+package com.abs.auth.repository;
 
+import com.abs.auth.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

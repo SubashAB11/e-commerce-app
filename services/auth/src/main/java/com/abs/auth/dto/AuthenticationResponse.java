@@ -1,4 +1,4 @@
-package com.abs.auth.auth;
+package com.abs.auth.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

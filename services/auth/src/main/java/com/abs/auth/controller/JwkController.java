@@ -1,6 +1,6 @@
-package com.abs.auth.auth;
+package com.abs.auth.controller;
 
-import com.abs.auth.security.JWTService;
+import com.abs.auth.service.JWTService;
 import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

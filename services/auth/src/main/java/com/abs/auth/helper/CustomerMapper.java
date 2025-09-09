@@ -1,6 +1,7 @@
-package com.abs.auth.customer;
+package com.abs.auth.helper;
 
-import com.abs.auth.auth.RegistrationRequest;
+import com.abs.auth.dto.RegistrationRequest;
+import com.abs.auth.model.Customer;
 import org.springframework.stereotype.Service;
 
 @Service

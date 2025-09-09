@@ -1,18 +1,20 @@
-package com.abs.auth.auth;
+package com.abs.auth.service;
 
-import com.abs.auth.customer.Customer;
-import com.abs.auth.customer.CustomerMapper;
-import com.abs.auth.customer.CustomerRepository;
+import com.abs.auth.dto.AuthenticationRequest;
+import com.abs.auth.dto.AuthenticationResponse;
+import com.abs.auth.dto.RefreshRequest;
+import com.abs.auth.dto.RegistrationRequest;
+import com.abs.auth.model.Customer;
+import com.abs.auth.helper.CustomerMapper;
+import com.abs.auth.repository.CustomerRepository;
 import com.abs.auth.exception.BusinessException;
 import com.abs.auth.exception.ErrorCode;
-import com.abs.auth.security.JWTService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

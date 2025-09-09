@@ -1,7 +1,11 @@
-package com.abs.auth.customer;
+package com.abs.auth.service;
 
+import com.abs.auth.helper.CustomerMapper;
+import com.abs.auth.repository.CustomerRepository;
+import com.abs.auth.dto.ChangePasswordRequest;
 import com.abs.auth.exception.BusinessException;
 import com.abs.auth.exception.ErrorCode;
+import com.abs.auth.model.Customer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
