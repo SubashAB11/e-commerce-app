@@ -3,6 +3,7 @@ scalar BigDecimal
 
 type Query {
     customer(id: String!): Customer
+    product(id: Int!): Product
 }
 
 type Customer {
@@ -25,14 +26,9 @@ type Product {
     description: String
     availableQuantity: Float
     price: BigDecimal
-    category: Category
-}
-
-type Category {
-    id: Int!
-    name: String
-    description: String
-    products: [Product]
+    categoryId: Int
+    categoryName: String
+    categoryDescription: String
 }
 
 type Order {
@@ -67,4 +63,11 @@ type Payment {
     order: Order
     createdDate: DateTime
     lastModifiedDate: DateTime
+}
+
+type ProductsByCategory {
+    id: Int!
+    name: String
+    description: String
+    products: [Product]
 }
