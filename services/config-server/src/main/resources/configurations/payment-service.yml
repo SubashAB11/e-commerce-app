@@ -9,8 +9,7 @@ spring:
     hibernate:
       ddl-auto: update
     database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+    show-sql: false
 
   grpc:
     server:
@@ -22,7 +21,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.type.mapping: paymentConfirmation:com.abs.e_commerce.notification.PaymentNotificationRequest
+        spring.json.type.mapping: paymentConfirmation:com.abs.e_commerce.dto.PaymentNotificationRequest
 
 server:
   port: 8060
