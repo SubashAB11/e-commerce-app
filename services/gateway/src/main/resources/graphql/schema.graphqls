@@ -10,6 +10,10 @@ type Customer {
     firstName: String
     lastName: String
     email: String
+    address: Address
+}
+
+type Address {
     street: String
     houseNumber: String
     zipCode: String
