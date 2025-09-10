@@ -22,8 +22,8 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
-
                         .pathMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                        .pathMatchers("/graphql","/graphiql", "/graphiql/**", "/vendor/**").permitAll()
                         .anyExchange().authenticated())
                 .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
                 .formLogin(ServerHttpSecurity.FormLoginSpec::disable)

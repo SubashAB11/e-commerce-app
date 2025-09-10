@@ -28,12 +28,12 @@ public class CustomerController {
         return ResponseEntity.ok(service.getAllCustomers());
     }
 
-    @GetMapping("/get/{customer-id}")
+    @GetMapping("/{customer-id}")
     public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("customer-id") String customerId) {
         return ResponseEntity.ok(service.getCustomer(customerId));
     }
 
-    @DeleteMapping("/delete/{customer-id}")
+    @DeleteMapping("/{customer-id}")
     public ResponseEntity<?> deleteCustomer(@PathVariable("customer-id") String customerId) {
         service.deleteCustomer(customerId);
         return ResponseEntity.accepted().build();

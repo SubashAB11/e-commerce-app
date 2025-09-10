@@ -1,0 +1,66 @@
+scalar DateTime
+scalar BigDecimal
+
+type Query {
+    customer(id: String!): Customer
+}
+
+type Customer {
+    id: String!
+    firstName: String
+    lastName: String
+    email: String
+    street: String
+    houseNumber: String
+    zipCode: String
+}
+
+type Product {
+    id: Int!
+    name: String
+    description: String
+    availableQuantity: Float
+    price: BigDecimal
+    category: Category
+}
+
+type Category {
+    id: Int!
+    name: String
+    description: String
+    products: [Product]
+}
+
+type Order {
+    id: Int!
+    reference: String
+    totalAmount: BigDecimal
+    paymentMethod: PaymentMethod
+    customer: Customer
+    orderLines: [OrderLine]
+    createdDate: DateTime
+    lastModifiedDate: DateTime
+}
+
+type OrderLine {
+    id: Int!
+    order: Order
+    product: Product
+    quantity: Float
+}
+
+enum PaymentMethod {
+    UPI
+    CREDIT_CARD
+    MASTER_CARD
+    BITCOIN
+}
+
+type Payment {
+    id: Int!
+    amount: BigDecimal
+    paymentMethod: PaymentMethod
+    order: Order
+    createdDate: DateTime
+    lastModifiedDate: DateTime
+}
