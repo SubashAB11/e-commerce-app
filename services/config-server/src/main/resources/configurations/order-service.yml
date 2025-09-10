@@ -9,16 +9,15 @@ spring:
     hibernate:
       ddl-auto: update
     database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+    show-sql: false
 
   kafka:
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring.json.type.mapping: orderConfirmation:com.abs.e_commerce.dto.OrderConfirmation
+#      properties:
+#        spring.json.type.mapping: orderConfirmation:com.abs.e_commerce.dto.OrderConfirmation
 
 server:
   port: 8070
