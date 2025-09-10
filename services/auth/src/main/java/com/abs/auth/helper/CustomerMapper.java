@@ -1,5 +1,6 @@
 package com.abs.auth.helper;
 
+import com.abs.auth.dto.CustomerRegistration;
 import com.abs.auth.dto.RegistrationRequest;
 import com.abs.auth.model.Customer;
 import org.springframework.stereotype.Service;
@@ -11,5 +12,9 @@ public class CustomerMapper {
                 .email(request.email())
                 .password(request.password())
                 .build();
+    }
+
+    public CustomerRegistration toCustomerRegistration(RegistrationRequest request) {
+        return new CustomerRegistration(request.firstName(), request.lastName(), request.email(), request.address());
     }
 }

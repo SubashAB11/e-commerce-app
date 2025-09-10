@@ -1,9 +1,6 @@
 package com.abs.auth.service;
 
-import com.abs.auth.dto.AuthenticationRequest;
-import com.abs.auth.dto.AuthenticationResponse;
-import com.abs.auth.dto.RefreshRequest;
-import com.abs.auth.dto.RegistrationRequest;
+import com.abs.auth.dto.*;
 import com.abs.auth.model.Customer;
 import com.abs.auth.helper.CustomerMapper;
 import com.abs.auth.repository.CustomerRepository;
@@ -28,6 +25,7 @@ public class AuthService {
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
     private final PasswordEncoder encoder;
+    private final CustomerRegistrationProducerService customerRegistrationProducerService;
 
     public AuthenticationResponse login(AuthenticationRequest request) {
         Authentication authenticate = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.email(), request.password()));
@@ -44,6 +42,8 @@ public class AuthService {
         if(this.customerRepository.existsByEmailIgnoreCase(request.email())) throw new BusinessException(ErrorCode.EMAIL_ALREADY_EXISTS, request.email());
         if(request.password().isBlank() || !request.password().equals(request.confirmPassword())) throw new BusinessException(ErrorCode.PASSWORD_NOT_MATCH);
         Customer customer = this.customerMapper.toCustomer(request);
+        CustomerRegistration customerRegistration = this.customerMapper.toCustomerRegistration(request);
+        this.customerRegistrationProducerService.sendCustomerRegistration(customerRegistration);
         customer.setPassword(encoder.encode(customer.getPassword()));
         log.debug("saving user to db {}", customer);
         this.customerRepository.save(customer);

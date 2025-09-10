@@ -1,4 +1,4 @@
-package com.abs.auth.security;
+package com.abs.auth.configuration;
 
 import com.abs.auth.service.JWTService;
 import jakarta.servlet.*;

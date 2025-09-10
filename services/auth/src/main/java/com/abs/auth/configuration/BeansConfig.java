@@ -1,4 +1,4 @@
-package com.abs.auth.security;
+package com.abs.auth.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

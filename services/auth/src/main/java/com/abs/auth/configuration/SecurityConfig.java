@@ -1,4 +1,4 @@
-package com.abs.auth.security;
+package com.abs.auth.configuration;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

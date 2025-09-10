@@ -1,5 +1,6 @@
 package com.abs.e_commerce.service;
 
+import com.abs.e_commerce.dto.CustomerRegistration;
 import com.abs.e_commerce.dto.CustomerRequest;
 import com.abs.e_commerce.dto.CustomerResponse;
 import com.abs.e_commerce.exception.CustomerNotFoundException;
@@ -19,9 +20,8 @@ public class CustomerService {
     private final CustomerRepository repository;
     private final CustomerMapper mapper;
 
-    public String createCustomer(CustomerRequest request) {
+    public void createCustomer(CustomerRegistration request) {
         Customer c = repository.save(mapper.toCustomer(request));
-        return c.getId();
     }
 
     public void updateCustomer(CustomerRequest request) {
